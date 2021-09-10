@@ -1,17 +1,22 @@
 {
-  "name": "stellar-hd-wallet",
+  "name": "@bajetech/digitalbits-hd-wallet",
   "version": "0.0.10",
-  "description": "Key derivation for Stellar (SEP-0005)",
-  "author": "Chris Hatch",
-  "repository": "chatch/stellar-hd-wallet",
+  "description": "Key derivation for the DigitalBits blockchain (based on Stellar's SEP-0005)",
+  "author": "BajeTech <hello@bajetech.com>",
+  "repository": {
+    "url": "git@github.com:bajetech/digitalbits-hd-wallet",
+    "type": "git"
+  },
   "license": "Apache-2.0",
-  "main": "lib/stellar-hd-wallet.js",
+  "main": "lib/digitalbits-hd-wallet.js",
   "files": [
-    "lib"
+    "lib/**"
   ],
   "scripts": {
-    "test": "mocha --require babel-register",
-    "prepublish": "./node_modules/.bin/babel src --out-dir lib"
+    "compile": "shx rm -rf lib/ && babel src -d lib",
+    "prepublish": "npm run compile",
+    "mocha": "mocha --config ./.mocharc.json test/",
+    "test": "npm run compile && npm run mocha"
   },
   "keywords": [
     "SEP-0005",
@@ -19,21 +24,27 @@
     "BIP-0039",
     "BIP-0044",
     "ed25519",
-    "stellar",
+    "digitalbits",
     "cryptocurrencies",
     "keys"
   ],
   "dependencies": {
-    "bip39": "^2.5.0",
+    "bip39": "^3.0.4",
     "create-hmac": "^1.1.7",
-    "lodash": "^4.17.11",
-    "stellar-base": "^0.13.1"
+    "lodash": "^4.17.21",
+    "xdb-digitalbits-base": "^5.3.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
-    "mocha": "^4.0.1"
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/register": "^7.15.3",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "esm": "^3.2.25",
+    "mocha": "^9.1.1",
+    "shx": "^0.3.3"
+  },
+  "engines": {
+    "node": ">= 12"
   }
 }
