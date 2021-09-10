@@ -1,7 +1,7 @@
-import has from "lodash/has";
+import has from "lodash/has.js";
 import bip39 from "bip39";
-import {derivePath} from "./hd-key";
-import {Keypair} from "stellar-base";
+import { derivePath } from "./hd-key.mjs";
+import { Keypair } from "xdb-digitalbits-base";
 
 const ENTROPY_BITS = 256; // = 24 word mnemonic
 
@@ -12,7 +12,7 @@ const INVALID_MNEMONIC = "Invalid mnemonic (see bip39)";
  * Class for SEP-0005 key derivation.
  * @see {@link https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md|SEP-0005}
  */
-class StellarHDWallet {
+class DigitalBitsHDWallet {
   /**
    * Instance from a BIP39 mnemonic string.
    * @param {string} mnemonic A BIP39 mnemonic
@@ -21,10 +21,10 @@ class StellarHDWallet {
    * @throws {Error} Invalid Mnemonic
    */
   static fromMnemonic(mnemonic, password = undefined, language = "english") {
-    if (!StellarHDWallet.validateMnemonic(mnemonic, language)) {
+    if (!DigitalBitsHDWallet.validateMnemonic(mnemonic, language)) {
       throw new Error(INVALID_MNEMONIC);
     }
-    return new StellarHDWallet(bip39.mnemonicToSeedHex(mnemonic, password));
+    return new DigitalBitsHDWallet(bip39.mnemonicToSeedSync(mnemonic, password).toString("hex"));
   }
 
   /**
@@ -39,7 +39,7 @@ class StellarHDWallet {
     else if (typeof seed === "string") seedHex = seed;
     else throw new TypeError(INVALID_SEED);
 
-    return new StellarHDWallet(seedHex);
+    return new DigitalBitsHDWallet(seedHex);
   }
 
   /**
@@ -56,12 +56,10 @@ class StellarHDWallet {
   static generateMnemonic({
     entropyBits = ENTROPY_BITS,
     language = "english",
-    rngFn = undefined
+    rngFn = undefined,
   } = {}) {
     if (language && !has(bip39.wordlists, language))
-      throw new TypeError(
-        `Language ${language} does not have a wordlist in the bip39 module`
-      );
+      throw new TypeError(`Language ${language} does not have a wordlist in the bip39 module`);
     const wordlist = bip39.wordlists[language];
     return bip39.generateMnemonic(entropyBits, rngFn, wordlist);
   }
@@ -76,9 +74,7 @@ class StellarHDWallet {
    */
   static validateMnemonic(mnemonic, language = "english") {
     if (language && !has(bip39.wordlists, language))
-      throw new TypeError(
-        `Language ${language} does not have a wordlist in the bip39 module`
-      );
+      throw new TypeError(`Language ${language} does not have a wordlist in the bip39 module`);
     const wordlist = bip39.wordlists[language];
     return bip39.validateMnemonic(mnemonic, wordlist);
   }
@@ -102,9 +98,9 @@ class StellarHDWallet {
   }
 
   /**
-   * Get Stellar account keypair for child key at given index
+   * Get DigitalBits account keypair for child key at given index
    * @param {Number} index Account index into path m/44'/148'/{index}
-   * @return {stellar-base.Keypair} Keypair instance for the account
+   * @return {xdb-digitalbits-base.Keypair} Keypair instance for the account
    */
   getKeypair(index) {
     const key = this.derive(`m/44'/148'/${index}'`);
@@ -130,4 +126,4 @@ class StellarHDWallet {
   }
 }
 
-export default StellarHDWallet;
+export default DigitalBitsHDWallet;
