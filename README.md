@@ -85,7 +85,7 @@ All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/maste
 
 ## Credits
 
-This package was copied and adapted from [`stellar-hd-wallet`](https://github.com/chatch/stellar-hd-wallet) for use with the [DigitalBits blockchain network](https://digitalbits.io), which is itself adapted from the [Stellar blockchain network](https://www.stellar.org).
+This package was cloned and adapted from [`stellar-hd-wallet`](https://github.com/chatch/stellar-hd-wallet) for use with the [DigitalBits blockchain network](https://digitalbits.io), which is itself adapted from the [Stellar blockchain network](https://www.stellar.org).
 
 Specifically the following differences from `stellar-hd-wallet` are worthy of mention:
 
