@@ -1,6 +1,18 @@
 # digitalbits-hd-wallet
 
-Key derivation for the DigitalBits blockchain (based on Stellar's [SEP-0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md)).
+> 🔐 Key derivation for the DigitalBits blockchain (based on Stellar's [SEP-0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md)) 🚀
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@bajetech/digitalbits-hd-wallet">
+    <img alt="npm (scoped)" src="https://img.shields.io/npm/v/@bajetech/digitalbits-hd-wallet?style=for-the-badge">
+  </a>
+  <a href="https://nodejs.org">
+    <img alt="Node.js" src="https://img.shields.io/badge/node->=12-yellowgreen?style=for-the-badge&labelColor=000000">
+  </a>
+  <a href="https://github.com/bajetech/digitalbits-hd-wallet/actions/workflows/pipeline.yml">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/bajetech/digitalbits-hd-wallet/digitalbits-hd-wallet%20CI?label=GitHub%20Actions&logo=github&style=for-the-badge">
+  </a>
+</p>
 
 ## Usage
 
