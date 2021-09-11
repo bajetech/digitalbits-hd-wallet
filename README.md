@@ -14,6 +14,12 @@
   </a>
 </p>
 
+## Installation
+
+```bash
+npm i @bajetech/digitalbits-hd-wallet  # or yarn add @bajetech/digitalbits-hd-wallet
+```
+
 ## Usage
 
 ```js
