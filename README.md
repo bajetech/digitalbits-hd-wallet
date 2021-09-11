@@ -68,3 +68,10 @@ All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/maste
 ## Credits
 
 This package was copied and adapted from [`stellar-hd-wallet`](https://github.com/chatch/stellar-hd-wallet) for use with the [DigitalBits blockchain network](https://digitalbits.io), which is itself adapted from the [Stellar blockchain network](https://www.stellar.org).
+
+Specifically the following differences from `stellar-hd-wallet` are worthy of mention:
+
+- GitHub Actions is used for a CI workflow instead of Travis CI.
+- All package dependencies and dev dependencies are brought up-to-date and the code modified where necessary to use up-to-date APIs.
+- The `xdb-digitalbits-base` package is used instead of `stellar-base`.
+- The source and test files were converted to ES modules.
