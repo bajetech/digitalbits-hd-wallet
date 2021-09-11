@@ -6,17 +6,17 @@ name: digitalbits-hd-wallet CI
 
 on:
   push:
-    branches: [$default-branch]
+    branches:
+      - main
   pull_request:
-    branches: [$default-branch]
-
+    branches:
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [12.x, 14.x, 16.x]
-
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Check out repository code
@@ -27,5 +27,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm ci
-      #this handles both compiling and running tests
       - run: npm test
