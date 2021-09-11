@@ -67,7 +67,4 @@ All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/maste
 
 ## Credits
 
-This package was formed for use with the [DigitalBits blockchain network](https://digitalbits.io), which is based on the [Stellar blockchain network](https://www.stellar.org). As such this package is based on the following works:
-
-- [The `stellar-hd-wallet` JS package](https://github.com/chatch/stellar-hd-wallet).
-- [Stellar Ecosystem Proposal 0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md)
+This package was copied and adapted from [`stellar-hd-wallet`](https://github.com/chatch/stellar-hd-wallet) for use with the [DigitalBits blockchain network](https://digitalbits.io), which is itself adapted from the [Stellar blockchain network](https://www.stellar.org).

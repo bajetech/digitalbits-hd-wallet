@@ -10,6 +10,12 @@ const INVALID_MNEMONIC = "Invalid mnemonic (see bip39)";
 
 /**
  * Class for SEP-0005 key derivation.
+ *
+ * This code is copied and adapted from:
+ *   https://github.com/chatch/stellar-hd-wallet/blob/b529d5ad19e9cc31029fd9fbae724856adf4b953/src/stellar-hd-wallet.js
+ *
+ * to use with the DigitalBits blockchain network and ecosystem.
+ *
  * @see {@link https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md|SEP-0005}
  */
 class DigitalBitsHDWallet {

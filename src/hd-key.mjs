@@ -6,6 +6,13 @@
  * is a pure JS implementation.
  *
  * The original ed25519-hd-key module is licensed under "GPL-3".
+ *
+ * This code is an almost exact copy of the code from:
+ *   https://github.com/chatch/stellar-hd-wallet/blob/master/src/hd-key.js
+ *
+ * The only change was to convert the file to an ES module and to use an
+ * ES6 import statement to import the `create-hmac/browser.js` module
+ * instead of a CommonJS require statement.
  */
 
 import createHmac from "create-hmac/browser.js";
