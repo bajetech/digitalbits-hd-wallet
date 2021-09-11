@@ -1,5 +1,10 @@
 ## In main
 
+## v1.0.1
+
+- Adds CHANGELOG.
+- Fixes package-lock.json so it has the correct version number for the release.
+
 ## v1.0.0
 
 This release comes with NO changes. Instead, we are simply bumping the version to 1.0.0 to indicate we are committed to following the [semantic versioning spec](http://semver.org) from this point on when publishing releases of this package.
