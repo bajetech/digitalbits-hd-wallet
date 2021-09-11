@@ -1,11 +1,11 @@
 # digitalbits-hd-wallet
 
-Key derivation for the DigitalBits blockchain (based on Stellar's [SEP-0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md))
+Key derivation for the DigitalBits blockchain (based on Stellar's [SEP-0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md)).
 
 ## Usage
 
 ```js
-import DigitalBitsHDWallet from "digitalbits-hd-wallet";
+import DigitalBitsHDWallet from "@bajetech/digitalbits-hd-wallet";
 
 const mnemonic = DigitalBitsHDWallet.generateMnemonic();
 const wallet = DigitalBitsHDWallet.fromMnemonic(mnemonic);
@@ -41,7 +41,7 @@ The full list of language keys are under exports 'wordlists' [here](https://gith
 ### Usage
 
 ```js
-import DigitalBitsHDWallet from "digitalbits-hd-wallet";
+import DigitalBitsHDWallet from "@bajetech/digitalbits-hd-wallet";
 
 // traditional chinese - 24 words
 DigitalBitsHDWallet.generateMnemonic({
@@ -63,4 +63,11 @@ DigitalBitsHDWallet.generateMnemonic({ language: "french", entropyBits: 128 });
 
 ## Tests
 
-All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md#test-cases) are exercised [here](https://github.com/bajetech/digitalbits-hd-wallet/blob/main/test/sep0005.js) against [these](https://github.com/bajetech/digitalbits-hd-wallet/tree/main/test/data).
+All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md#test-cases) are exercised [here](https://github.com/bajetech/digitalbits-hd-wallet/blob/main/test/sep0005.test.mjs) against [these](https://github.com/bajetech/digitalbits-hd-wallet/tree/main/test/data).
+
+## Credits
+
+This package was formed for use with the [DigitalBits blockchain network](https://digitalbits.io), which is based on the [Stellar blockchain network](https://www.stellar.org). As such this package is based on the following works:
+
+- [The `stellar-hd-wallet` JS package](https://github.com/chatch/stellar-hd-wallet).
+- [Stellar Ecosystem Proposal 0005](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md)
