@@ -1,5 +1,10 @@
 ## In main
 
+## v1.0.2
+
+- NO code changes.
+- README updated.
+
 ## v1.0.1
 
 - Adds CHANGELOG.
