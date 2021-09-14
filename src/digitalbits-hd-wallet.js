@@ -1,6 +1,6 @@
-import has from "lodash/has.js";
-import bip39 from "bip39";
-import { derivePath } from "./hd-key.mjs";
+import has from "lodash/has";
+import * as bip39 from "bip39";
+import { derivePath } from "./hd-key";
 import { Keypair } from "xdb-digitalbits-base";
 
 const ENTROPY_BITS = 256; // = 24 word mnemonic

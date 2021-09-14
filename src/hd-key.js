@@ -15,7 +15,7 @@
  * instead of a CommonJS require statement.
  */
 
-import createHmac from "create-hmac/browser.js";
+import createHmac from "create-hmac/browser";
 
 const ED25519_CURVE = "ed25519 seed";
 const HARDENED_OFFSET = 0x80000000;
