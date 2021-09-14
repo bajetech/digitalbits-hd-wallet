@@ -1,5 +1,6 @@
 {
   "timeout": 20000,
-  "extension": ".test.mjs",
+  "extension": ".test.js",
+  "require": "@babel/register",
   "exit": true
 }

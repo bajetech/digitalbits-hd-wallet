@@ -1,6 +1,6 @@
 import assert from "assert";
-import has from "lodash/has.js";
-import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet.mjs";
+import has from "lodash/has";
+import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet";
 
 const assertKeypair = (actualKeypair, expectedPublicKey, expectedSecret) => {
   assert.strictEqual(actualKeypair.publicKey(), expectedPublicKey);
@@ -12,8 +12,7 @@ const specTestCase = (num) => () => {
   let wallet;
 
   before(async function () {
-    testCase = await import(`./data/sep0005-testcase-${num}.js`);
-    testCase = testCase.default;
+    testCase = require(`./data/sep0005-testcase-${num}.js`);
 
     wallet = has(testCase, "passphrase")
       ? DigitalBitsHDWallet.fromMnemonic(testCase.seedWords, testCase.passphrase)

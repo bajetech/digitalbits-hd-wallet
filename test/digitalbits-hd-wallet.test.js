@@ -1,6 +1,6 @@
 import assert from "assert";
-import bip39 from "bip39";
-import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet.mjs";
+import * as bip39 from "bip39";
+import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet";
 
 const MNEMONIC_ENGLISH =
   "asthma blouse security reform bread mesh roast garage " +
