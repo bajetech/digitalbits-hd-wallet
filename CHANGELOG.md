@@ -1,4 +1,14 @@
-## In main
+# CHANGELOG
+
+## v1.1.0
+
+**NOTE**: This is a major bug-fix release (although only the minor release number is being given a bump). This is because there is no change to the API but the bug fixed is more serious than just releasing it as a patch update.
+
+The individual changes are as follows:
+
+- Adds @babel/plugin-transform-runtime as a devDependency, @babel/runtime as a dependency and updates babel configuration. [f6d3c1a](https://github.com/bajetech/digitalbits-hd-wallet/commit/f6d3c1acadc2d24724300ad3648f94f9308d9225)
+- Changes source files extension from `.mjs` to `.js` [6553592](https://github.com/bajetech/digitalbits-hd-wallet/commit/655359237006b4a7f680adbeaf30324dd799cdc6)
+- Updates tests so they will run given the change in src files from _.mjs to _.js [c8d3273](https://github.com/bajetech/digitalbits-hd-wallet/commit/c8d3273e74efc55b6b7f074557198540393634a9)
 
 ## v1.0.2
 
