@@ -14,6 +14,10 @@
   </a>
 </p>
 
+## IMPORTANT NOTICE
+
+**Update to v1.1.0 or higher**: Versions of this package prior to v1.1.0 are broken! It is very likely that if you attempt to use a pre-1.1.0 release of this package in your projects, they will NOT run! Please be sure to update to v1.1.0 or higher for a working release.
+
 ## Installation
 
 ```bash
@@ -92,4 +96,3 @@ Specifically the following differences from `stellar-hd-wallet` are worthy of me
 - GitHub Actions is used for a CI workflow instead of Travis CI.
 - All package dependencies and dev dependencies are brought up-to-date and the code modified where necessary to use up-to-date APIs.
 - The `xdb-digitalbits-base` package is used instead of `stellar-base`.
-- The source and test files were converted to ES modules.
