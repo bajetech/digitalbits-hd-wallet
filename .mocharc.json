@@ -1,6 +1,0 @@
-{
-  "timeout": 20000,
-  "extension": ".test.js",
-  "require": "@babel/register",
-  "exit": true
-}
