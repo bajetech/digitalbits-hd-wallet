@@ -1,6 +1,6 @@
 import assert from "assert";
 import has from "lodash/has";
-import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet";
+import DigitalBitsHDWallet from "../lib/digitalbits-hd-wallet";
 
 const assertKeypair = (actualKeypair, expectedPublicKey, expectedSecret) => {
   assert.strictEqual(actualKeypair.publicKey(), expectedPublicKey);

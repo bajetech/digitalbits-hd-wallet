@@ -20,7 +20,7 @@ import createHmac from "create-hmac/browser";
 const ED25519_CURVE = "ed25519 seed";
 const HARDENED_OFFSET = 0x80000000;
 
-export const derivePath = (path, seed) => {
+export const derivePath = (path: string, seed: string) => {
   if (!isValidPath(path)) {
     throw new Error("Invalid derivation path");
   }
@@ -30,13 +30,14 @@ export const derivePath = (path, seed) => {
     .slice(1)
     .map(replaceDerive)
     .map((el) => parseInt(el, 10));
+
   return segments.reduce((parentKeys, segment) => CKDPriv(parentKeys, segment + HARDENED_OFFSET), {
     key,
     chainCode,
   });
 };
 
-const getMasterKeyFromSeed = (seed) => {
+const getMasterKeyFromSeed = (seed: string) => {
   const hmac = createHmac("sha512", ED25519_CURVE);
   const I = hmac.update(Buffer.from(seed, "hex")).digest();
   const IL = I.slice(0, 32);
@@ -47,7 +48,7 @@ const getMasterKeyFromSeed = (seed) => {
   };
 };
 
-const CKDPriv = ({ key, chainCode }, index) => {
+const CKDPriv = ({ key, chainCode }: { key: Buffer; chainCode: Buffer }, index: number) => {
   const indexBuffer = Buffer.allocUnsafe(4);
   indexBuffer.writeUInt32BE(index, 0);
   const data = Buffer.concat([Buffer.alloc(1, 0), key, indexBuffer]);
@@ -60,11 +61,17 @@ const CKDPriv = ({ key, chainCode }, index) => {
   };
 };
 
-const replaceDerive = (val) => val.replace("'", "");
+const replaceDerive = (val: string) => val.replace("'", "");
 const pathRegex = new RegExp("^m(\\/[0-9]+')+$");
-const isValidPath = (path) => {
+
+const isValidPath = (path: string) => {
   if (!pathRegex.test(path)) {
     return false;
   }
-  return !path.split("/").slice(1).map(replaceDerive).some(isNaN);
+
+  return !path
+    .split("/")
+    .slice(1)
+    .map(replaceDerive)
+    .some((a) => isNaN(Number(a)));
 };

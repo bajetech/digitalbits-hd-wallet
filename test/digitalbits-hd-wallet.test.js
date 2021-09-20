@@ -1,6 +1,6 @@
 import assert from "assert";
 import * as bip39 from "bip39";
-import DigitalBitsHDWallet from "../src/digitalbits-hd-wallet";
+import DigitalBitsHDWallet from "../lib/digitalbits-hd-wallet";
 
 const MNEMONIC_ENGLISH =
   "asthma blouse security reform bread mesh roast garage " +
@@ -9,10 +9,8 @@ const MNEMONIC_ENGLISH =
 const MNEMONIC_KOREAN =
   "한쪽 공개 학점 거액 재빨리 주민 해군 조절 종로 여론 성당 송아지";
 
-const FROM_MNEMONIC_ENGLISH_PUBLIC_KEY_0 =
-  "GBJCYUFJA7VA4GOZV7ZFVB7FGZTLVQTNS7JWJOWQVK6GN7DBUW7L5I5O";
-const FROM_MNEMONIC_ENGLISH_SECRET_KEY_0 =
-  "SC4SPBMTO3FAKHIW5EGMOX6UR6ILGBKHFWUPKN4QHEU426UBU4CKFNHW";
+const FROM_MNEMONIC_ENGLISH_PUBLIC_KEY_0 = "GBJCYUFJA7VA4GOZV7ZFVB7FGZTLVQTNS7JWJOWQVK6GN7DBUW7L5I5O";
+const FROM_MNEMONIC_ENGLISH_SECRET_KEY_0 = "SC4SPBMTO3FAKHIW5EGMOX6UR6ILGBKHFWUPKN4QHEU426UBU4CKFNHW";
 
 describe("DigitalBitsHDWallet", () => {
   describe("fromMnemonic", () => {
@@ -150,10 +148,7 @@ describe("DigitalBitsHDWallet", () => {
           DigitalBitsHDWallet.generateMnemonic({ language: "toki_pona" });
           assert.fail(`expected error`);
         } catch (err) {
-          assert.strictEqual(
-            err.message,
-            "Language toki_pona does not have a wordlist in the bip39 module"
-          );
+          assert.strictEqual(err.message, "Language toki_pona does not have a wordlist in the bip39 module");
         }
       });
     });

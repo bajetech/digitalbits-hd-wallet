@@ -1,4 +1,4 @@
-import has from "lodash/has";
+import has from "lodash.has";
 import * as bip39 from "bip39";
 import { derivePath } from "./hd-key";
 import { Keypair } from "xdb-digitalbits-base";
@@ -7,6 +7,31 @@ const ENTROPY_BITS = 256; // = 24 word mnemonic
 
 const INVALID_SEED = "Invalid seed (must be a Buffer or hex string)";
 const INVALID_MNEMONIC = "Invalid mnemonic (see bip39)";
+
+/**
+ * Configurable options defining how to generate the mnemonic
+ */
+export interface GenerateMnemonicOptions {
+  /**
+   * Entropy bits
+   *
+   * @default 256
+   */
+  entropyBits?: number;
+
+  /**
+   * Name of a language wordlist as defined in the 'bip39' npm module.
+   * See {@link https://github.com/bitcoinjs/bip39/tree/master/src/wordlists}
+   *
+   * @default 'english'
+   */
+  language?: string;
+
+  /**
+   * RNG function (default is crypto.randomBytes)
+   */
+  rngFn?: (size: number) => Buffer;
+}
 
 /**
  * Class for SEP-0005 key derivation.
@@ -19,14 +44,18 @@ const INVALID_MNEMONIC = "Invalid mnemonic (see bip39)";
  * @see {@link https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md|SEP-0005}
  */
 class DigitalBitsHDWallet {
+  private seedHex: string;
+
   /**
    * Instance from a BIP39 mnemonic string.
-   * @param {string} mnemonic A BIP39 mnemonic
-   * @param {string} [password] Optional mnemonic password
-   * @param {string} [language='english'] Optional language of mnemonic
+   * @param mnemonic - A BIP39 mnemonic
+   * @param password - Optional mnemonic password.
+   *                   Defaults to undefined
+   * @param language - Optional language of mnemonic.
+   *                   Defaults to 'english'
    * @throws {Error} Invalid Mnemonic
    */
-  static fromMnemonic(mnemonic, password = undefined, language = "english") {
+  static fromMnemonic(mnemonic: string, password: string | undefined = undefined, language: string = "english") {
     if (!DigitalBitsHDWallet.validateMnemonic(mnemonic, language)) {
       throw new Error(INVALID_MNEMONIC);
     }
@@ -35,10 +64,10 @@ class DigitalBitsHDWallet {
 
   /**
    * Instance from a seed
-   * @param {(string|Buffer)} binary seed
+   * @param seed - binary seed
    * @throws {TypeError} Invalid seed
    */
-  static fromSeed(seed) {
+  static fromSeed(seed: string | Buffer) {
     let seedHex;
 
     if (Buffer.isBuffer(seed)) seedHex = seed.toString("hex");
@@ -50,20 +79,15 @@ class DigitalBitsHDWallet {
 
   /**
    * Generate a mnemonic using BIP39
-   * @param {Object} props Properties defining how to generate the mnemonic
-   * @param {Number} [props.entropyBits=256] Entropy bits
-   * @param {string} [props.language='english'] name of a language wordlist as
-   *          defined in the 'bip39' npm module. See module.exports.wordlists:
-   *          here https://github.com/bitcoinjs/bip39/blob/master/index.js
-   * @param {function} [props.rng] RNG function (default is crypto.randomBytes)
-   * @throws {TypeError} Langauge not supported by bip39 module
+   * @param options - Options defining how to generate the mnemonic
+   * @throws {TypeError} Language not supported by bip39 module
    * @throws {TypeError} Invalid entropy
    */
   static generateMnemonic({
     entropyBits = ENTROPY_BITS,
     language = "english",
     rngFn = undefined,
-  } = {}) {
+  }: GenerateMnemonicOptions = {}) {
     if (language && !has(bip39.wordlists, language))
       throw new TypeError(`Language ${language} does not have a wordlist in the bip39 module`);
     const wordlist = bip39.wordlists[language];
@@ -72,13 +96,15 @@ class DigitalBitsHDWallet {
 
   /**
    * Validate a mnemonic using BIP39
-   * @param {string} mnemonic A BIP39 mnemonic
-   * @param {string} [language='english'] name of a language wordlist as
+   * @param mnemonic - A BIP39 mnemonic
+   * @param language - name of a language wordlist as
    *          defined in the 'bip39' npm module. See module.exports.wordlists:
    *          here https://github.com/bitcoinjs/bip39/blob/master/index.js
-   * @throws {TypeError} Langauge not supported by bip39 module
+   *
+   *          Defaults to 'english'
+   * @throws {TypeError} Language not supported by bip39 module
    */
-  static validateMnemonic(mnemonic, language = "english") {
+  static validateMnemonic(mnemonic: string, language: string = "english") {
     if (language && !has(bip39.wordlists, language))
       throw new TypeError(`Language ${language} does not have a wordlist in the bip39 module`);
     const wordlist = bip39.wordlists[language];
@@ -87,47 +113,50 @@ class DigitalBitsHDWallet {
 
   /**
    * New instance from seed hex string
-   * @param {string} seedHex Hex string
+   * @param seedHex - Hex string
    */
-  constructor(seedHex) {
+  constructor(seedHex: string) {
     this.seedHex = seedHex;
   }
 
   /**
    * Derive key given a full BIP44 path
-   * @param {string} path BIP44 path string (eg. m/44'/148'/8')
-   * @return {Buffer} Key binary as Buffer
+   *
+   * @param path - BIP44 path string (eg. m/44'/148'/8')
+   * @return Key binary as Buffer
    */
-  derive(path) {
+  derive(path: string): Buffer {
     const data = derivePath(path, this.seedHex);
     return data.key;
   }
 
   /**
    * Get DigitalBits account keypair for child key at given index
-   * @param {Number} index Account index into path m/44'/148'/{index}
-   * @return {xdb-digitalbits-base.Keypair} Keypair instance for the account
+   *
+   * @param index - Account index into path m/44'/148'/{index}
+   * @return Keypair instance for the account
    */
-  getKeypair(index) {
+  getKeypair(index: number): Keypair {
     const key = this.derive(`m/44'/148'/${index}'`);
     return Keypair.fromRawEd25519Seed(key);
   }
 
   /**
-   * Get public key for account at index
-   * @param {Number} index Account index into path m/44'/148'/{index}
-   * @return {string} Public key
+   * Get public key for account at
+   *
+   * @param index - Account index into path m/44'/148'/{index}
+   * @return Public key
    */
-  getPublicKey(index) {
+  getPublicKey(index: number): string {
     return this.getKeypair(index).publicKey();
   }
 
   /**
    * Get secret for account at index
-   * @param {Number} index Account index into path m/44'/148'/{index}
-   * @return {string} Secret
+   * @param index -  Account index into path m/44'/148'/{index}
+   * @return Secret
    */
-  getSecret(index) {
+  getSecret(index: number): string {
     return this.getKeypair(index).secret();
   }
 }
