@@ -24,6 +24,8 @@
 npm i @bajetech/digitalbits-hd-wallet  # or yarn add @bajetech/digitalbits-hd-wallet
 ```
 
+**Note**: We use npm v7 as our package manager of choice for development of this library. You are free to use either npm or Yarn, however, we highly recommend npm v7 over v6 if you choose to use npm as your package manager.
+
 ## Usage
 
 ```js
@@ -83,9 +85,13 @@ DigitalBitsHDWallet.generateMnemonic({ language: "french", entropyBits: 128 });
 
 (using [randombytes npm module](https://github.com/crypto-browserify/randombytes))
 
+## TypeScript Support
+
+Many thanks to [Kyle Roach](https://github.com/iRoachie) for converting this library to [TypeScript](https://www.typescriptlang.org) via the following [PR](https://github.com/bajetech/digitalbits-hd-wallet/pull/3). TypeScript support is now available as of version **1.2.0**.
+
 ## Tests
 
-All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md#test-cases) are exercised [here](https://github.com/bajetech/digitalbits-hd-wallet/blob/main/test/sep0005.test.mjs) against [these](https://github.com/bajetech/digitalbits-hd-wallet/tree/main/test/data).
+All [SEP-0005 test cases](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0005.md#test-cases) are exercised [here](https://github.com/bajetech/digitalbits-hd-wallet/blob/main/test/sep0005.test.js) against [these](https://github.com/bajetech/digitalbits-hd-wallet/tree/main/test/data).
 
 ## Credits
 
