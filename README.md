@@ -98,7 +98,7 @@ This package was cloned and adapted from [`stellar-hd-wallet`](https://github.co
 Specifically the following differences from `stellar-hd-wallet` are worthy of mention:
 
 - GitHub Actions is used for a CI workflow instead of Travis CI.
-- All package dependencies and dev dependencies are brought up-to-date and the code modified where necessary to use up-to-date APIs.
+- All _direct_ package dependencies and dev dependencies are brought up-to-date and the code modified where necessary to use up-to-date APIs.
 - The `xdb-digitalbits-base` package is used instead of `stellar-base`.
 - As of version 1.2.0 the package is written in TypeScript, with built-in TypeScript definitions exported.
 - Yarn is used as the package manager of choice for development of this library.

@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v1.2.1
+
+- refactor: use 'es6' for TS target and module config settings [2c9a483](https://github.com/bajetech/digitalbits-hd-wallet/commit/2c9a4831616348c281806912ba41267648669649)
+- chore: switch from npm to Yarn [97d14da](https://github.com/bajetech/digitalbits-hd-wallet/commit/97d14da14943d3f9ec18c0e2b95e3103cfba70ad)
+
+## v1.2.0
+
+**NOTE**: This release marks the addition of TS support to this library.
+
+The individual changes are as follows:
+
+- feat: convert project to typescript. PR [#3](https://github.com/bajetech/digitalbits-hd-wallet/pull/3)
+- chore: bump mocha dev dependency to 9.1.2 [e80d4a5](https://github.com/bajetech/digitalbits-hd-wallet/commit/e80d4a5f12b19951e253a035e75980d2e0c07f8f)
+
 ## v1.1.0
 
 **NOTE**: This is a major bug-fix release (although only the minor release number is being given a bump). This is because there is no change to the API but the bug fixed is more serious than just releasing it as a patch update.
