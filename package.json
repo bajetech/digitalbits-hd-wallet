@@ -1,6 +1,6 @@
 {
   "name": "@bajetech/digitalbits-hd-wallet",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Key derivation for the DigitalBits blockchain (based on Stellar's SEP-0005)",
   "author": "BajeTech <hello@bajetech.com>",
   "repository": {
