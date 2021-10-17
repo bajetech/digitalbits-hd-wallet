@@ -16,10 +16,10 @@
   ],
   "scripts": {
     "build": "shx rm -rf lib/ && tsc",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn build",
     "mocha": "mocha test/",
-    "pretest": "npm run build",
-    "test": "npm run mocha"
+    "pretest": "yarn build",
+    "test": "yarn mocha"
   },
   "keywords": [
     "SEP-0005",
@@ -38,15 +38,15 @@
     "xdb-digitalbits-base": "^5.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "@babel/register": "^7.15.3",
     "@types/create-hmac": "^1.1.0",
     "@types/lodash.has": "^4.5.6",
-    "mocha": "^9.1.2",
+    "mocha": "^9.1.3",
     "regenerator-runtime": "^0.13.9",
     "shx": "^0.3.3",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.4"
   },
   "engines": {
     "node": ">= 12"

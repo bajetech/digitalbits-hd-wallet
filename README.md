@@ -21,10 +21,8 @@
 ## Installation
 
 ```bash
-npm i @bajetech/digitalbits-hd-wallet  # or yarn add @bajetech/digitalbits-hd-wallet
+yarn add @bajetech/digitalbits-hd-wallet  # or npm i @bajetech/digitalbits-hd-wallet
 ```
-
-**Note**: We use npm v7 as our package manager of choice for development of this library. You are free to use either npm or Yarn, however, we highly recommend npm v7 over v6 if you choose to use npm as your package manager.
 
 ## Usage
 
@@ -102,3 +100,5 @@ Specifically the following differences from `stellar-hd-wallet` are worthy of me
 - GitHub Actions is used for a CI workflow instead of Travis CI.
 - All package dependencies and dev dependencies are brought up-to-date and the code modified where necessary to use up-to-date APIs.
 - The `xdb-digitalbits-base` package is used instead of `stellar-base`.
+- As of version 1.2.0 the package is written in TypeScript, with built-in TypeScript definitions exported.
+- Yarn is used as the package manager of choice for development of this library.
