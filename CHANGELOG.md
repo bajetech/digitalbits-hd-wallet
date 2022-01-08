@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.2.2
+
+- build: bump dev dependencies [62e39ad](https://github.com/bajetech/digitalbits-hd-wallet/commit/62e39ade74f11b5f32c219372d3bab8b8cf884b8)
+
 ## v1.2.1
 
 - refactor: use 'es6' for TS target and module config settings [2c9a483](https://github.com/bajetech/digitalbits-hd-wallet/commit/2c9a4831616348c281806912ba41267648669649)
