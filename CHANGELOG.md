@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.2.3
+
+- build: bump dev dependencies [a2bdb4d](https://github.com/bajetech/digitalbits-hd-wallet/commit/a2bdb4d050de30db37a360bd1961d908d2c44c9c)
+
 ## v1.2.2
 
 - build: bump dev dependencies [62e39ad](https://github.com/bajetech/digitalbits-hd-wallet/commit/62e39ade74f11b5f32c219372d3bab8b8cf884b8)
